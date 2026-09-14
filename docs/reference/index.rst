@@ -7,4 +7,5 @@ API Reference
     stock.rst
     analytics.rst
     realtime.rst
+    institutional.rst
     codes.rst

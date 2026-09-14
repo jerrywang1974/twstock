@@ -185,6 +185,27 @@ twstock.realtime.get('2330')    # 擷取當前台積電股票資訊
 twstock.realtime.get(['2330', '2337', '2409'])  # 擷取當前三檔資訊
 ```
 
+## 三大法人買賣超（全市場）
+
+擷取上市（TWSE T86）與上櫃（TPEx）當日三大法人／投信買賣超。單位為**股**。
+
+```python
+from twstock import institutional
+
+rows = institutional.fetch("2026-09-11")              # 上市 + 上櫃
+twse_only = institutional.fetch("20260911", markets=["twse"])
+top_trust = institutional.top_by(rows, field="trust_net", limit=10)
+
+for r in top_trust:
+    print(r.code, r.name, institutional.to_lots(r.trust_net), "張")
+```
+
+說明：
+
+* 「投信」為公開資料中的投信**合計**，非單一投信公司明細
+* 非交易日會回傳空清單
+* 進階掃市／通知／管理後台請見獨立專案 [twstock-radar](https://github.com/jerrywang1974/twstock-radar)
+
 
 ## 使用範例
 
