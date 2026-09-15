@@ -27,6 +27,10 @@ dynamic = ["version"]
 [tool.hatch.version]
 source = "uv-dynamic-versioning"
 
+# Used when .git is absent (Docker COPY, source archives).
+[tool.uv-dynamic-versioning]
+fallback-version = "0.0.0"
+
 [project.urls]
 homepage = "https://github.com/mlouielu/twstock"
 repository = "https://github.com/mlouielu/twstock"
